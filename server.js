@@ -6,6 +6,7 @@ const app = express();
 // Routes imports
 const docs = require('./routes/docs')
 const barcode = require('./routes/barcode')
+const inventory = require('./routes/inventory')
 
 // Mongo DB config
 const mongoDB = 'mongodb://food:food@ds247078.mlab.com:47078/food-storage'
@@ -39,6 +40,7 @@ app.use((req, res, next) => {
 
 app.use('/docs', docs)
 app.use('/api/barcode', barcode)
+app.use('/api/inventory', inventory)
 
 /*********************************/
 /*     EndPoint test funct       */
