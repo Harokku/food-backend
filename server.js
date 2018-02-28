@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const cors = require('cors')
 const app = express();
 
 // Routes imports
@@ -23,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(express.static('public'))
 const port = process.env.PORT || 3000;
+app.use(cors())
 
 app.listen(port, () => {
   console.group('server started!')
@@ -31,7 +33,7 @@ app.listen(port, () => {
 })
 
 app.use((req, res, next) => {
-  console.group('New request received:')
+  console.group(`New request received from ${req.ip}:`)
   console.log(req.method, req.url)
   console.groupEnd()
 
